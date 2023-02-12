@@ -44,7 +44,6 @@ menu_option_1() {
     -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
-    -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
     "$INPUT_PATH"
 
   ### All done. ###

@@ -14,7 +14,6 @@ menu:
           path: "builds/linux/photon/4/"
           var_files:
             - "network.pkrvars.hcl"
-            - "storage.pkrvars.hcl"
       - entry: "Debian 11"
         build:
           path: "builds/linux/debian/11/"
