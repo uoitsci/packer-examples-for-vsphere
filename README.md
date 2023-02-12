@@ -343,6 +343,7 @@ The directory structure of the repository.
 │   ├── proxy.pkrvars.hcl.example
 │   ├── rhsm.pkrvars.hcl.example
 │   ├── scc.pkrvars.hcl.example
+│   ├── storage.pkrvars.hcl.example
 │   ├── vsphere.pkrvars.hcl.example
 │   ├── linux
 │   │   └── <distribution>
@@ -821,6 +822,67 @@ vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
 > **Note**
 >
 > Static IP assignement is only supported by Linux (except SUSE) for now.
+
+##### Storage Variables (Optional)
+
+Edit the `config/storage.pkrvars.hcl` file to configure a partitioning scheme:
+
+- Disk device and whether to use a swap partition.
+- Disk partitions and related settings.
+- Logical volumes and related settings (optional).
+
+**Example**: `config/storage.pkrvars.hcl`
+
+```hcl
+vm_disk_device = "sda"
+vm_disk_use_swap = false
+vm_disk_partitions = [
+  {
+    name = "efi"
+    size = 1024,
+    format = {
+      label  = "EFIFS",
+      fstype = "fat32",
+    },
+    mount = {
+      path    = "/boot/efi",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "boot"
+    size = 1024,
+    format = {
+      label  = "BOOTFS",
+      fstype = "xfs",
+    },
+    mount = {
+      path    = "/boot",
+      options = "",
+    },
+    volume_group = "",
+  },
+  {
+    name = "root"
+    size = -1,
+    format = {
+      label  = "ROOTFS",
+      fstype = "xfs",
+    },
+    mount = {
+      path    = "/",
+      options = "",
+    },
+    volume_group = "",
+  },
+]
+vm_disk_lvm = []
+```
+
+> **Note**
+>
+> Storage settings is only supported by Linux (except Photon and SUSE for now).
 
 ### Step 4 - Guest Operating Systems ISOs
 
