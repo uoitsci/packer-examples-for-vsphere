@@ -150,6 +150,9 @@ d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
+# Network configuration
+${network}
+
 # User Configuration
 d-i passwd/user-fullname string ${build_username}
 d-i passwd/username string ${build_username}

@@ -339,6 +339,7 @@ The directory structure of the repository.
 │   ├── ansible.pkrvars.hcl.example
 │   ├── build.pkrvars.hcl.example
 │   ├── common.pkrvars.hcl.example
+│   ├── network.pkrvars.hcl.example
 │   ├── proxy.pkrvars.hcl.example
 │   ├── rhsm.pkrvars.hcl.example
 │   ├── scc.pkrvars.hcl.example
@@ -798,6 +799,28 @@ Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to con
   > **Note**
   >
   > All `variables.auto.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
+
+##### Network Variables (Optional)
+
+Edit the `config/network.pkrvars.hcl` file to configure a static IP address:
+
+- IPv4 address, netmask, and gateway.
+- DNS list.
+
+Without any configuration, the network is set using DHCP protocol.
+
+**Example**: `config/network.pkrvars.hcl`
+
+```hcl
+vm_ip_address = "172.16.100.192"
+vm_ip_netmask = 24
+vm_ip_gateway = "172.16.100.1"
+vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
+```
+
+> **Note**
+>
+> Static IP assignement is only supported by Linux (except SUSE) for now.
 
 ### Step 4 - Guest Operating Systems ISOs
 
