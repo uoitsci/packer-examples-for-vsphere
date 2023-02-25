@@ -808,7 +808,7 @@ Edit the `config/network.pkrvars.hcl` file to configure a static IP address:
 - IPv4 address, netmask, and gateway.
 - DNS list.
 
-Without any configuration, the network is set using DHCP protocol.
+By default, the network is set to use DHCP for its configuration.
 
 **Example**: `config/network.pkrvars.hcl`
 
@@ -821,7 +821,7 @@ vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
 
 > **Note**
 >
-> Static IP assignement is only supported by Linux (except SUSE) for now.
+> Static IP assignment is only supported for the Linux machine images (except SUSE).
 
 ##### Storage Variables (Optional)
 
@@ -882,7 +882,7 @@ vm_disk_lvm = []
 
 > **Note**
 >
-> Storage settings is only supported by Linux (except Photon and SUSE for now).
+> Storage settings are only supported for Linux machine images (except Photon OS and SUSE).
 
 ### Step 4 - Guest Operating Systems ISOs
 
