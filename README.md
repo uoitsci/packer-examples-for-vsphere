@@ -329,71 +329,71 @@ The directory structure of the repository.
 ├── README.md
 ├── set-envvars.sh
 ├── ansible
-│   ├── ansible.cfg
-│   ├── main.yml
+│   ├── ansible.cfg
+│   ├── main.yml
 │   └── roles
 │       └── <role>
 │           └── *.yml
 ├── artifacts
 ├── builds
-│   ├── ansible.pkrvars.hcl.example
-│   ├── build.pkrvars.hcl.example
-│   ├── common.pkrvars.hcl.example
-│   ├── network.pkrvars.hcl.example
-│   ├── proxy.pkrvars.hcl.example
-│   ├── rhsm.pkrvars.hcl.example
-│   ├── scc.pkrvars.hcl.example
-│   ├── storage.pkrvars.hcl.example
-│   ├── vsphere.pkrvars.hcl.example
+│   ├── ansible.pkrvars.hcl.example
+│   ├── build.pkrvars.hcl.example
+│   ├── common.pkrvars.hcl.example
+│   ├── linux-storage.pkrvars.hcl.example
+│   ├── network.pkrvars.hcl.example
+│   ├── proxy.pkrvars.hcl.example
+│   ├── rhsm.pkrvars.hcl.example
+│   ├── scc.pkrvars.hcl.example
+│   ├── vsphere.pkrvars.hcl.example
 │   ├── linux
 │   │   └── <distribution>
 │   │       └── <version>
 │   │           ├── *.pkr.hcl
-│   │           ├── *.auto.pkrvars.hcl
+│   │           ├── *.pkrvars.hcl.example
 │   │           └── data
 │   │               └── ks.pkrtpl.hcl
 │   └── windows
 │       └── <distribution>
 │           └── <version>
 │               ├── *.pkr.hcl
-│               ├── *.auto.pkrvars.hcl
+│               ├── *.pkrvars.hcl.example
 │               └── data
 │                   └── autounattend.pkrtpl.hcl
 ├── manifests
 ├── scripts
-│   ├── linux
+│   ├── linux
 │   └── windows
 │       └── *.ps1
 └── terraform
     ├── vsphere-role
-    │   └── *.tf
+    │   └── *.tf
     └── vsphere-virtual-machine
         ├── content-library-ovf-linux-cloud-init
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-ovf-linux-cloud-init-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-ovf-linux-guest-customization
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-ovf-linux-guest-customization-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-ovf-windows-guest-customization
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-ovf-windows-guest-customization-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-template-linux-guest-customization-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── content-library-template-windows-guest-customization-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── template-linux-cloud-init
-        │   └── *.tf
+        │   └── *.tf
         ├── template-linux-cloud-init-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── template-linux-guest-customization
-        │   └── *.tf
+        │   └── *.tf
         ├── template-linux-guest-customization-hcp-packer
-        │   └── *.tf
+        │   └── *.tf
         ├── template-windows-guest-customization
-        │   └── *.tf
+        │   └── *.tf
         └── template-windows-guest-customization-hcp-packer
             └── *.tf
 ```
@@ -752,7 +752,7 @@ These variables are **only** used if you are performing a SUSE Linux Enterprise 
 
 ##### vSphere Variables
 
-Edit the `builds/vsphere.pkrvars.hcl` file to configure the following:
+Edit the `config/vsphere.pkrvars.hcl` file to configure the following:
 
 - vSphere Endpoint and Credentials
 - vSphere Settings
@@ -785,7 +785,7 @@ rainpole@macos> . ./set-envvars.sh
 
 #### Machine Image Variables (Optional)
 
-Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to configure the following virtual machine hardware settings, as required:
+Edit the `config/<image>.pkrvars.hcl` file to configure the following virtual machine hardware settings, as required:
 
 - CPUs `(int)`
 - CPU Cores `(int)`
@@ -799,7 +799,7 @@ Edit the `*.auto.pkrvars.hcl` file in each `builds/<type>/<build>` folder to con
 
   > **Note**
   >
-  > All `variables.auto.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
+  > All `config/<image>.pkrvars.hcl` default to using the [VMware Paravirtual SCSI controller][vmware-pvscsi] and the [VMXNET 3][vmware-vmxnet3] network card device types.
 
 ##### Network Variables (Optional)
 
@@ -823,15 +823,15 @@ vm_dns_list   = [ "172.16.11.4", "172.16.11.5" ]
 >
 > Static IP assignment is only supported for the Linux machine images (except SUSE).
 
-##### Storage Variables (Optional)
+##### Linux Storage Variables (Optional)
 
-Edit the `config/storage.pkrvars.hcl` file to configure a partitioning scheme:
+Edit the `config/linux-storage.pkrvars.hcl` file to configure a partitioning scheme:
 
 - Disk device and whether to use a swap partition.
 - Disk partitions and related settings.
 - Logical volumes and related settings (optional).
 
-**Example**: `config/storage.pkrvars.hcl`
+**Example**: `config/linux-storage.pkrvars.hcl`
 
 ```hcl
 vm_disk_device = "sda"
@@ -945,7 +945,7 @@ The project supports using a datastore to store your guest operating system [`.i
    common_iso_datastore = "sfo-w01-cl01-ds-nfs01"
    ```
 
-   **Example**: `builds/<type>/<build>/*.auto.pkrvars.hcl`
+   **Example**: `config/linux-photon-4.pkrvars.hcl`
 
    ```hcl
    iso_path           = "iso/linux/photon"
