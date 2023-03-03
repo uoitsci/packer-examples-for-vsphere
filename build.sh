@@ -21,6 +21,9 @@ CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
 
 menu_option_1() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/4/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -44,6 +47,7 @@ menu_option_1() {
     -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -52,6 +56,9 @@ menu_option_1() {
 
 menu_option_2() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/debian/11/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Debian 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -76,6 +83,7 @@ menu_option_2() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -84,6 +92,9 @@ menu_option_2() {
 
 menu_option_3() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/22-04-lts/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS (cloud-init) Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -108,6 +119,7 @@ menu_option_3() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -116,6 +128,9 @@ menu_option_3() {
 
 menu_option_4() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/20-04-lts/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS (cloud-init) Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -140,6 +155,7 @@ menu_option_4() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -148,6 +164,9 @@ menu_option_4() {
 
 menu_option_5() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/18-04-lts/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -172,6 +191,7 @@ menu_option_5() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -180,6 +200,9 @@ menu_option_5() {
 
 menu_option_6() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/9/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -205,6 +228,7 @@ menu_option_6() {
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/rhsm.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -213,6 +237,9 @@ menu_option_6() {
 
 menu_option_7() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/8/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -238,6 +265,7 @@ menu_option_7() {
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/rhsm.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -246,6 +274,9 @@ menu_option_7() {
 
 menu_option_8() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/7/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -271,6 +302,7 @@ menu_option_8() {
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/rhsm.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -279,6 +311,9 @@ menu_option_8() {
 
 menu_option_9() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux/9/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a AlmaLinux OS 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -303,6 +338,7 @@ menu_option_9() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -311,6 +347,9 @@ menu_option_9() {
 
 menu_option_10() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/almalinux/8/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a AlmaLinux OS 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -335,6 +374,7 @@ menu_option_10() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -343,6 +383,9 @@ menu_option_10() {
 
 menu_option_11() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/9/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Rocky Linux 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -367,6 +410,7 @@ menu_option_11() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -375,6 +419,9 @@ menu_option_11() {
 
 menu_option_12() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/rocky/8/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Rocky Linux 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -399,6 +446,7 @@ menu_option_12() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -407,6 +455,9 @@ menu_option_12() {
 
 menu_option_13() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/9-stream/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a CentOS Stream 9 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -431,6 +482,7 @@ menu_option_13() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -439,6 +491,9 @@ menu_option_13() {
 
 menu_option_14() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/8-stream/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a CentOS Stream 8 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -463,6 +518,7 @@ menu_option_14() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -471,6 +527,9 @@ menu_option_14() {
 
 menu_option_15() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/centos/7/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a CentOS Linux 7 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -495,6 +554,7 @@ menu_option_15() {
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/network.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/storage.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -503,6 +563,9 @@ menu_option_15() {
 
 menu_option_16() {
   INPUT_PATH="$SCRIPT_PATH"/builds/linux/sles/15/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a SUSE Linux Enterprise Server 15 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -526,6 +589,7 @@ menu_option_16() {
     -var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/scc.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -534,6 +598,9 @@ menu_option_16() {
 
 menu_option_17() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build all Windows Server 2022 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -554,6 +621,7 @@ menu_option_17() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -562,6 +630,9 @@ menu_option_17() {
 
 menu_option_18() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -583,6 +654,7 @@ menu_option_18() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -591,6 +663,9 @@ menu_option_18() {
 
 menu_option_19() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2022/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2022 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -612,6 +687,7 @@ menu_option_19() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -620,6 +696,9 @@ menu_option_19() {
 
 menu_option_20() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build all Windows Server 2019 Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -640,6 +719,7 @@ menu_option_20() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -648,6 +728,9 @@ menu_option_20() {
 
 menu_option_21() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Standard Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -669,6 +752,7 @@ menu_option_21() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -677,6 +761,9 @@ menu_option_21() {
 
 menu_option_22() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/server/2019/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build Microsoft Windows Server 2019 Datacenter Templates for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -698,6 +785,7 @@ menu_option_22() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -706,6 +794,9 @@ menu_option_22() {
 
 menu_option_23() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/11/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -726,6 +817,7 @@ menu_option_23() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
@@ -734,6 +826,9 @@ menu_option_23() {
 
 menu_option_24() {
   INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
+  BUILD_PATH=${INPUT_PATH#"${SCRIPT_PATH}/builds/"}
+  BUILD_VARS="$(echo "${BUILD_PATH%/}" | tr -s '/' | tr '/' '-').pkrvars.hcl"
+
   echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
   echo -e "\nContinue? (y/n)"
   read -r REPLY
@@ -754,6 +849,7 @@ menu_option_24() {
     -var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/build.pkrvars.hcl" \
     -var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+    -var-file="$CONFIG_PATH/$BUILD_VARS" \
     "$INPUT_PATH"
 
   ### All done. ###
