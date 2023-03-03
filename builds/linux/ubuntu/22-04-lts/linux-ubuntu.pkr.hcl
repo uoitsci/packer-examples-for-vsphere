@@ -7,10 +7,10 @@
 //  The Packer configuration.
 
 packer {
-  required_version = ">= 1.8.5"
+  required_version = ">= 1.8.6"
   required_plugins {
     git = {
-      version = ">= 0.3.2"
+      version = ">= 0.3.3"
       source  = "github.com/ethanmdavidson/git"
     }
     vsphere = {

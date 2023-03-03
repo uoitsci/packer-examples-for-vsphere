@@ -2,7 +2,7 @@
 
 ![Last Commit](https://img.shields.io/github/last-commit/vmware-samples/packer-examples-for-vsphere?style=for-the-badge&logo=github)&nbsp;&nbsp;
 [![The Changelog](https://img.shields.io/badge/The%20Changelog-Read-blue?style=for-the-badge&logo=github)](CHANGELOG.md)&nbsp;&nbsp;
-![Packer 1.8.5+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.5+-blue?style=for-the-badge&logo=packer&logoColor=white)
+![Packer 1.8.6+](https://img.shields.io/badge/HashiCorp%20Packer-1.8.6+-blue?style=for-the-badge&logo=packer&logoColor=white)
 
 ## Table of Contents
 
@@ -78,7 +78,7 @@ Operating systems and versions tested with the project:
 
 **Packer**:
 
-- HashiCorp [Packer][packer-install] 1.8.5 or higher.
+- HashiCorp [Packer][packer-install] 1.8.6 or higher.
 
   > **Note**
   >
@@ -88,7 +88,7 @@ Operating systems and versions tested with the project:
       <summary>Photon OS</summary>
 
     ```shell
-    PACKER_VERSION="1.8.5"
+    PACKER_VERSION="1.8.6"
     OS_PACKAGES="wget unzip"
 
     if [[ $(uname -m) == "x86_64" ]]; then
@@ -158,7 +158,7 @@ Operating systems and versions tested with the project:
   > Required plugins are automatically downloaded and initialized when using `./build.sh`. For dark sites, you may download the plugins and place these same directory as your Packer executable `/usr/local/bin` or `$HOME/.packer.d/plugins`.
 
   - HashiCorp [Packer Plugin for VMware vSphere][packer-plugin-vsphere] (`vsphere-iso`) 1.1.1 or higher.
-  - [Packer Plugin for Git][packer-plugin-git] 0.3.2 or higher - a community plugin for HashiCorp Packer.
+  - [Packer Plugin for Git][packer-plugin-git] 0.3.3 or higher - a community plugin for HashiCorp Packer.
   - [Packer Plugin for Windows Updates][packer-plugin-windows-update] 0.14.1 or higher - a community plugin for HashiCorp Packer.
 
 **Additional Software Packages**:
@@ -186,10 +186,10 @@ The following additional software packages must be installed on the operating sy
     tdnf -y install git jq xorriso
     ```
 
-  - HashiCorp [Terraform][terraform-install] 1.3.7 or higher.
+  - HashiCorp [Terraform][terraform-install] 1.3.9 or higher.
 
     ```shell
-    TERRAFORM_VERSION="1.3.7"
+    TERRAFORM_VERSION="1.3.9"
     OS_PACKAGES="wget unzip"
 
     if [[ $(uname -m) == "x86_64" ]]; then
@@ -220,17 +220,17 @@ The following additional software packages must be installed on the operating sy
 
   - mkpasswd - Password generating utility
 
-  - HashiCorp [Terraform][terraform-install] 1.3.7 or higher.
+  - HashiCorp [Terraform][terraform-install] 1.3.9 or higher.
 
     ```shell
     pip3 install --user ansible-core==2.13
     sudo apt -y install git jq xorriso whois terraform
     ```
 
-  - [gomplate][gomplate-install] 3.11.3 or higher.
+  - [gomplate][gomplate-install] 3.11.4 or higher.
 
     ```shell
-    GOMPLATE_VERSION="3.11.3"
+    GOMPLATE_VERSION="3.11.4"
     LINUX_ARCH="amd64"
 
     sudo curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${LINUX_ARCH}
@@ -250,9 +250,9 @@ The following additional software packages must be installed on the operating sy
 
   - Coreutils
 
-  - HashiCorp [Terraform][terraform-install] 1.3.7 or higher.
+  - HashiCorp [Terraform][terraform-install] 1.3.9 or higher.
 
-  - [gomplate][gomplate-install] 3.11.3 or higher.
+  - [gomplate][gomplate-install] 3.11.4 or higher.
 
     ```shell
     pip3 install --user ansible-core==2.13
@@ -1127,7 +1127,7 @@ Happy building!!!
 [packer-plugin-vsphere]: https://developer.hashicorp.com/packer/plugins/builders/vsphere/vsphere-iso
 [packer-plugin-windows-update]: https://github.com/rgl/packer-plugin-windows-update
 [packer-variables]: https://developer.hashicorp.com/packer/docs/templates/hcl_templates/variables
-[photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/kickstart-through-http/packer-template/
+[photon-kickstart]: https://vmware.github.io/photon/docs/user-guide/working-with-kickstart/
 [redhat-kickstart]: https://access.redhat.com/labs/kickstartconfig/
 [suse-autoyast]: https://documentation.suse.com/sles/15-SP3/single-html/SLES-autoyast/index.html#CreateProfile-CMS
 [terraform-install]: https://www.terraform.io/docs/cli/install/apt.html
